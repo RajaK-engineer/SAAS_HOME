@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudSync SaaS Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for animations and additional styling */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* CSS Animation for the hero section */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-element {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Animation for the CTA button */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(67, 97, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0); }
+        }
+        
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Transition for cards */
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* Sticky navbar */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Media query for mobile optimization */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .mobile-stack {
+                flex-direction: column;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        /* CSS Grid for testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="sticky-nav py-4 px-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i class="fas fa-cloud text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold text-blue-600">CloudSync</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="font-medium hover:text-blue-600 transition duration-300">Features</a>
+                <a href="#pricing" class="font-medium hover:text-blue-600 transition duration-300">Pricing</a>
+                <a href="#testimonials" class="font-medium hover:text-blue-600 transition duration-300">Testimonials</a>
+                <a href="#contact" class="font-medium hover:text-blue-600 transition duration-300">Contact</a>
+            </div>
+            
+            <!-- CTA Button -->
+            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-300 pulse-btn">
+                Get Started
+            </button>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-blue-600 text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+            <div class="flex flex-col space-y-4">
+                <a href="#features" class="font-medium hover:text-blue-600 transition duration-300">Features</a>
+                <a href="#pricing" class="font-medium hover:text-blue-600 transition duration-300">Pricing</a>
+                <a href="#testimonials" class="font-medium hover:text-blue-600 transition duration-300">Testimonials</a>
+                <a href="#contact" class="font-medium hover:text-blue-600 transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 px-6">
+        <div class="container mx-auto hero-content flex flex-col md:flex-row items-center justify-between">
+            <!-- Hero Text -->
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Sync Your Data Across <span class="text-blue-600">All Platforms</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8">
+                    CloudSync is the ultimate SaaS solution for seamless data synchronization across all your devices and platforms. Secure, fast, and reliable.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center">
+                        Start Free Trial <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <button class="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-50 transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-play-circle mr-2"></i> Watch Demo
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Hero Image/Animation -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-lg">
+                    <div class="floating-element bg-gradient-to-br from-blue-500 to-purple-600 w-64 h-64 rounded-3xl mx-auto shadow-2xl flex items-center justify-center">
+                        <i class="fas fa-cloud-upload-alt text-white text-8xl"></i>
+                    </div>
+                    
+                    <!-- Animated elements around the main cloud -->
+                    <div class="absolute top-0 left-0 w-16 h-16 bg-blue-400 rounded-full opacity-70 floating-element" style="animation-delay: 0.5s;"></div>
+                    <div class="absolute bottom-10 right-0 w-20 h-20 bg-purple-400 rounded-full opacity-70 floating-element" style="animation-delay: 1s;"></div>
+                    <div class="absolute top-10 right-10 w-12 h-12 bg-cyan-400 rounded-full opacity-70 floating-element" style="animation-delay: 1.5s;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Powerful Features</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Enterprise Security</h3>
+                    <p class="text-gray-600 mb-4">Bank-level encryption and multi-factor authentication to keep your data safe and secure.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-sync-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Real-Time Sync</h3>
+                    <p class="text-gray-600 mb-4">Changes made on one device are instantly available on all your other connected devices.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Advanced Analytics</h3>
+                    <p class="text-gray-600 mb-4">Gain insights into your data usage, synchronization patterns, and team collaboration.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 px-6 bg-gradient-to-b from-white to-blue-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Simple, Transparent Pricing</h2>
+            <p class="text-xl text-gray-600 text-center mb-12 max-w-2xl mx-auto">Choose the plan that's right for your business. No hidden fees, no surprises.</p>
+            
+            <div class="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-8 mobile-stack">
+                <!-- Basic Plan -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full max-w-md">
+                    <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                    <p class="text-gray-600 mb-6">For individuals and small teams</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$9</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> 100 GB Storage</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> 5 Users</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Basic Sync</li>
+                        <li class="flex items-center"><i class="fas fa-times text-gray-400 mr-3"></i> Advanced Analytics</li>
+                    </ul>
+                    <button class="w-full bg-gray-100 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-200 transition duration-300">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Pro Plan (Highlighted) -->
+                <div class="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-2xl shadow-2xl text-white w-full max-w-md relative transform scale-105">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-yellow-500 text-gray-900 px-4 py-1 rounded-full font-bold text-sm">MOST POPULAR</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <p class="text-blue-100 mb-6">For growing businesses</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$29</span>
+                        <span class="text-blue-200">/month</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> 1 TB Storage</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> 20 Users</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Real-Time Sync</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Advanced Analytics</li>
+                    </ul>
+                    <button class="w-full bg-white text-blue-600 py-3 rounded-lg font-medium hover:bg-blue-50 transition duration-300">
+                        Try Free for 14 Days
+                    </button>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full max-w-md">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-600 mb-6">For large organizations</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$99</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Unlimited Storage</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Unlimited Users</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Real-Time Sync</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Priority Support</li>
+                    </ul>
+                    <button class="w-full bg-gray-100 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-200 transition duration-300">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What Our Customers Say</h2>
+            
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-2xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="font-bold text-blue-600">JS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">John Smith</h4>
+                            <p class="text-gray-600 text-sm">CTO at TechCorp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"CloudSync has transformed how our remote teams collaborate. The real-time sync is flawless!"</p>
+                    <div class="flex text-yellow-500 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-2xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="font-bold text-purple-600">AS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Alexandra Chen</h4>
+                            <p class="text-gray-600 text-sm">CEO at StartupXYZ</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Switching to CloudSync cut our data management costs by 40%. The analytics dashboard is incredible."</p>
+                    <div class="flex text-yellow-500 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-2xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="font-bold text-green-600">MR</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Marcus Rodriguez</h4>
+                            <p class="text-gray-600 text-sm">IT Director at GlobalBank</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"The security features gave our compliance team confidence. Enterprise-grade solution at a fair price."</p>
+                    <div class="flex text-yellow-500 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Sync Your World?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of businesses already using CloudSync to streamline their data management.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button class="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-50 transition duration-300">
+                    Start Your Free Trial
+                </button>
+                <button class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-medium text-lg hover:bg-white/10 transition duration-300">
+                    Schedule a Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-12 px-6 bg-gray-900 text-white">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+                            <i class="fas fa-cloud text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">CloudSync</span>
+                    </div>
+                    <p class="text-gray-400 max-w-md">Sync your data across all platforms securely and efficiently with our enterprise-grade SaaS solution.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-2xl transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-2xl transition duration-300">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-2xl transition duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-2xl transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 CloudSync. All rights reserved. | <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a> | <a href="#" class="hover:text-white transition duration-300">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
